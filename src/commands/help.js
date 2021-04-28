@@ -12,8 +12,7 @@ module.exports = {
 
     const helpMessage = orderedCommands.reduce((commandsList, commandName) => {
       const command = commands.get(commandName);
-      return `${commandsList}${command.emoji} **${prefix}${command.name}** - ${command.description}\n`;
-    }, '');
+      return `${commandsList}${command.emoji} **${prefix}${command.name}** - ${command.description}\n`; , '');
 
     const embed = new MessageEmbed()
       .setTitle('Text-to-Speech Help Message')
