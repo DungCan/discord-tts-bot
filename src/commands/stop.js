@@ -1,7 +1,7 @@
 module.exports = {
   name: 'stop',
   description: 'Stop the TTS bot and leave the channel.',
-  emoji: ':x:',
+  emoji: '<:downvote:777882844844130344>',
   execute(message) {
     const { ttsPlayer, voice } = message.guild;
     const connection = voice ? voice.connection : null;
