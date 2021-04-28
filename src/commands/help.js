@@ -20,7 +20,7 @@ module.exports = {
       .setColor(MESSAGE_EMBED.color)
       .setThumbnail(MESSAGE_EMBED.helpThumbnail)
       .addField('List of available commands:', helpMessage)
-      .addField('Spotted a bug?', `This bot is far from perfect, so in case you found a bug, please report it in this bot's [**GitHub Issues Page**](${MESSAGE_EMBED.helpURL}).`);
+     // .addField('Spotted a bug?', `This bot is far from perfect, so in case you found a bug, please report it in this bot's [**GitHub Issues Page**](${MESSAGE_EMBED.helpURL}).`);
     
     message.channel.send(embed);
   }
