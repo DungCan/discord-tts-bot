@@ -3,7 +3,7 @@ const logger = require('@greencoast/logger');
 module.exports = {
   name: 'aeiou',
   description: 'Send an aeiou (similar to Moonbase Alpha) TTS message in your voice channel.',
-  emoji: ':robot:',
+  emoji: '<:bot:775944103636631562>',
   execute(message, options) {
     const { channel } = message.member.voice;
     const { ttsPlayer, name: guildName, voice } = message.guild;
