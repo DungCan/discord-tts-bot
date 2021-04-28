@@ -4,7 +4,7 @@ const languages = require('../../data/languages.json');
 module.exports = {
   name: 'lang',
   description: 'Change the TTS language.',
-  emoji: ':map:',
+  emoji: '<a:CAT_Note:775314844860678144>',
   execute(message, options) {
     let [newLang] = options.args;
     const { ttsPlayer } = message.guild;
