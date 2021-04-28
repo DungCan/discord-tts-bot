@@ -73,7 +73,7 @@ const langsEmbed = new MessageEmbed()
 module.exports = {
   name: 'langs',
   description: 'Display a list of the supported languages.',
-  emoji: ':page_facing_up:',
+  emoji: '<a:CAT_Note:775314844860678144>',
   execute(message) {
     message.channel.send(langsEmbed);
   }
