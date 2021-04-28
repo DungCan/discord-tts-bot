@@ -2,7 +2,7 @@ const logger = require('@greencoast/logger');
 
 module.exports = {
   name: 'say',
-  description: `Send a TTS message in your voice channel.}`,
+  description: `Send a TTS message in your voice channel.`,
   emoji: '<:voice:781104924091613190>',
   execute(message, options) {
     const { channel } = message.member.voice;
