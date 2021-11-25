@@ -11,7 +11,7 @@ class TTSPlayer {
 
     this.queue = [];
     this.speaking = false;
-    this.lang = 'en';
+    this.lang = 'vi';
     this.slow = false;
   }
 
