@@ -10,7 +10,7 @@ module.exports = {
     const connection = voice ? voice.connection : null;
     const [atLeastOneWord] = options.args;
 
-    if (!channel) {
+    if (!channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
       return;
     }
 
