@@ -33,7 +33,7 @@ client.on('invalidated', () => {
 });
 
 client.on('message', (message) => {
-  if (!message.content.startsWith(prefix) || message.author.bot || !message.guild) {
+  if (!message.content.toLowerCase().startsWith(prefix) || message.author.bot || !message.guild) {
     return;
   }
 
