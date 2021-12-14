@@ -13,7 +13,7 @@ module.exports = {
     if (!channel) {
       return;
     }
-    if(message.member.voice.channel.id !== message.guild.me.voice.channel.id) return
+    if(message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return
     if (!channel.joinable) {
       message.reply('I cannot join your voice channel.');
       return;
