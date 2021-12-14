@@ -10,10 +10,10 @@ module.exports = {
     const connection = voice ? voice.connection : null;
     const [atLeastOneWord] = options.args;
 
-    if (!channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
+    if (!channel) {
       return;
     }
-
+    if(message.member.voice.channel.id !== message.guild.me.voice.channel.id) return
     if (!channel.joinable) {
       message.reply('I cannot join your voice channel.');
       return;
