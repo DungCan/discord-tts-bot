@@ -1,7 +1,7 @@
 const logger = require('@greencoast/logger');
 
 module.exports = {
-  name: 'say',
+  name: 's',
   description: `Send a TTS message in your voice channel.`,
   emoji: '<:voice:781104924091613190>',
   execute(message, options) {
@@ -11,7 +11,6 @@ module.exports = {
     const [atLeastOneWord] = options.args;
 
     if (!channel) {
-      message.reply('you need to be in a voice channel first.');
       return;
     }
 
@@ -21,7 +20,6 @@ module.exports = {
     }
 
     if (!atLeastOneWord) {
-      message.reply('you need to specify a message.');
       return;
     }
 
