@@ -22,7 +22,7 @@ class ExtendedClient extends Client {
 
   updatePresence() {
     const numOfGuilds = this.guilds.cache.reduce((sum) => sum + 1, 0);
-    const presence = `PREFIX: c - 🦜🦚🦦🦥🌺🌼🌻`;
+    const presence = `Speaker with prefix: ${process.env.PREFIX}`;
 
     this.user.setPresence({
       activity: {
