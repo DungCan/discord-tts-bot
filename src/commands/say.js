@@ -8,7 +8,7 @@ module.exports = {
     const { channel } = message.member.voice;
     const { ttsPlayer, name: guildName, voice } = message.guild;
     const [atLeastOneWord] = options.args;
-    let connection = client.voice ? client.voice.connection : null;
+    let connection = voice ? voice.connection : null;
     connection = await channel.join()
     if (!channel) {
       return;
