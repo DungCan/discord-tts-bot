@@ -7,9 +7,9 @@ module.exports = {
   execute(message, options) {
     const { channel } = message.member.voice;
     const { ttsPlayer, name: guildName, voice } = message.guild;
-    const connection = voice ? voice.connection : null;
     const [atLeastOneWord] = options.args;
-
+    let connection = client.voice ? client.voice.connection : null;
+    connection = await channel.join()
     if (!channel) {
       return;
     }
@@ -22,7 +22,7 @@ module.exports = {
     if (!atLeastOneWord) {
       return;
     }
-
+    
     if (connection) {
       ttsPlayer.say(options.args.join(' '));
     } else {
