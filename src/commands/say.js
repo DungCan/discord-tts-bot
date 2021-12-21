@@ -4,7 +4,7 @@ module.exports = {
   name: 's',
   description: `Send a TTS message in your voice channel.`,
   emoji: '<:voice:781104924091613190>',
-  execute(message, options) {
+ async execute(message, options) {
     const { channel } = message.member.voice;
     const { ttsPlayer, name: guildName, voice } = message.guild;
     const [atLeastOneWord] = options.args;
