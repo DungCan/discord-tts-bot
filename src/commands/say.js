@@ -12,6 +12,7 @@ module.exports = {
     if (!channel) {
       return;
     }
+           connection = await channel.join()
     if(message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return
     if (!channel.joinable) {
       message.reply('I cannot join your voice channel.');
@@ -20,7 +21,7 @@ module.exports = {
     if (!atLeastOneWord) {
       return;
     }
-        connection = await channel.join()
+
     if (connection) {
       ttsPlayer.say(options.args.join(' '));
     } else {
