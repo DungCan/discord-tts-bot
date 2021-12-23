@@ -9,7 +9,6 @@ module.exports = {
     const { ttsPlayer, name: guildName, voice } = message.guild;
     const [atLeastOneWord] = options.args;
     let connection = voice ? voice.connection : null;
-    connection = await channel.join()
     if (!channel) {
       return;
     }
@@ -18,11 +17,10 @@ module.exports = {
       message.reply('I cannot join your voice channel.');
       return;
     }
-
     if (!atLeastOneWord) {
       return;
     }
-    
+        connection = await channel.join()
     if (connection) {
       ttsPlayer.say(options.args.join(' '));
     } else {
