@@ -9,10 +9,10 @@ module.exports = {
     const { ttsPlayer, name: guildName, voice } = message.guild;
     const [atLeastOneWord] = options.args;
     let connection = voice ? voice.connection : null;
-    if (!channel) {
+    if (!channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
       return;
     }
-    if(message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return
+//     if(message.guild.me.voice.channel && ) return
     if (!channel.joinable) {
       message.reply('I cannot join your voice channel.');
       return;
