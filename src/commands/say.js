@@ -20,25 +20,26 @@ module.exports = {
     if (!atLeastOneWord) {
       return;
     }
-    if(connection && message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
-      await channel.join()
+    if (connection) {
+      ttsPlayer.say(`${message.member.nickname} nói ${options.args.join(' ')}`);
+      if(message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
+      channel.join()
       .then(() => {
           logger.info(`Joined ${channel.name} in ${guildName}.`);
           message.channel.send(`Joined ${channel}.`);
           ttsPlayer.say(message.member.nickname + options.args.join(' '));
         })
         .catch((error) => {
-          throw error;
+        console.log(error)
+//           throw error;
         });
-    }
-    if (connection) {
-      ttsPlayer.say(message.member.nickname + options.args.join(' '));
+      }
     } else {
       channel.join()
         .then(() => {
           logger.info(`Joined ${channel.name} in ${guildName}.`);
           message.channel.send(`Joined ${channel}.`);
-          ttsPlayer.say(message.member.nickname + options.args.join(' '));
+          ttsPlayer.say(`${message.member.nickname} nói ${options.args.join(' ')}`);
         })
         .catch((error) => {
           throw error;
