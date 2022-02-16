@@ -23,7 +23,7 @@ module.exports = {
     }
 
     if (connection) {
-      ttsPlayer.say(message.author.username + options.args.join(' ')));
+      ttsPlayer.say(message.author.username + options.args.join(' '));
     } else {
       channel.join()
         .then(() => {
