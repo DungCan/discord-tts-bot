@@ -23,13 +23,13 @@ module.exports = {
     }
 
     if (connection) {
-      ttsPlayer.say(options.args.join(' '));
+      ttsPlayer.say(message.author.username + options.args.join(' ')));
     } else {
       channel.join()
         .then(() => {
           logger.info(`Joined ${channel.name} in ${guildName}.`);
           message.channel.send(`Joined ${channel}.`);
-          ttsPlayer.say(options.args.join(' '));
+          ttsPlayer.say(message.author.username + options.args.join(' '));
         })
         .catch((error) => {
           throw error;
