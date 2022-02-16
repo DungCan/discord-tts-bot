@@ -10,9 +10,9 @@ module.exports = {
     const [atLeastOneWord] = options.args;
     let connection = voice ? voice.connection : null;
     if (!channel) {
-      if( message.member.voice.channel.id !== message.guild.me.voice.channel.id) return
       return;
     }
+
 //     if(message.guild.me.voice.channel && ) return
     if (!channel.joinable) {
       message.reply('I cannot join your voice channel.');
@@ -21,10 +21,8 @@ module.exports = {
     if (!atLeastOneWord) {
       return;
     }
-    if (connection) {
-      ttsPlayer.say(`${message.member.nickname} nói ${options.args.join(' ')}`);
-      if(message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
-      channel.join()
+         if(message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
+       channel.join()
       .then(() => {
           logger.info(`Joined ${channel.name} in ${guildName}.`);
           message.channel.send(`Joined ${channel}.`);
@@ -34,7 +32,9 @@ module.exports = {
         console.log(error)
 //           throw error;
         });
-      }
+         }
+    if (connection) {
+      ttsPlayer.say(`${message.member.nickname} nói ${options.args.join(' ')}`);
     } else {
       channel.join()
         .then(() => {
