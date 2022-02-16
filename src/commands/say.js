@@ -12,7 +12,6 @@ module.exports = {
     if (!channel) {
       return;
     }
-           connection = await channel.join()
     if(message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return
     if (!channel.joinable) {
       message.reply('I cannot join your voice channel.');
@@ -21,15 +20,25 @@ module.exports = {
     if (!atLeastOneWord) {
       return;
     }
-
+    if(connection && message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
+      await channel.join()
+      .then(() => {
+          logger.info(`Joined ${channel.name} in ${guildName}.`);
+          message.channel.send(`Joined ${channel}.`);
+          ttsPlayer.say(message.member.nickname + options.args.join(' '));
+        })
+        .catch((error) => {
+          throw error;
+        });
+    }
     if (connection) {
-      ttsPlayer.say(message.author.username + options.args.join(' '));
+      ttsPlayer.say(message.member.nickname + options.args.join(' '));
     } else {
       channel.join()
         .then(() => {
           logger.info(`Joined ${channel.name} in ${guildName}.`);
           message.channel.send(`Joined ${channel}.`);
-          ttsPlayer.say(message.author.username + options.args.join(' '));
+          ttsPlayer.say(message.member.nickname + options.args.join(' '));
         })
         .catch((error) => {
           throw error;
