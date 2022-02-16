@@ -22,7 +22,14 @@ module.exports = {
     if (connection) {
       if(message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
       channel.join()
-      ttsPlayer.say(`${message.member.nickname} nói ${options.args.join(' ')}`);
+         .then(() => {
+          logger.info(`Joined ${channel.name} in ${guildName}.`);
+          message.channel.send(`Joined ${channel}.`);
+          ttsPlayer.say(`${message.member.nickname} nói ${options.args.join(' ')}`);
+        })
+        .catch((error) => {
+          throw error;
+        });
       }
       ttsPlayer.say(`${message.member.nickname} nói ${options.args.join(' ')}`);
     } else {
