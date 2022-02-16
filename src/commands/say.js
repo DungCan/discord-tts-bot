@@ -9,7 +9,8 @@ module.exports = {
     const { ttsPlayer, name: guildName, voice } = message.guild;
     const [atLeastOneWord] = options.args;
     let connection = voice ? voice.connection : null;
-    if (!channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) {
+    if (!channel) {
+      if( message.member.voice.channel.id !== message.guild.me.voice.channel.id) return
       return;
     }
 //     if(message.guild.me.voice.channel && ) return
