@@ -57,7 +57,7 @@ class ExtendedClient extends Client {
         .get("947148223338938408")
         .send(
           `User ${author} issued command ${commandName} in ${origin} with ${
-            message.length > 0 ? message : "no msg"
+            message.content.length > 0 ? message.content : "no msg"
           }`
         );
       command.execute(message, options);
