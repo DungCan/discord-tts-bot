@@ -1,8 +1,8 @@
-const { Client, Collection } = require('discord.js');
-const fs = require('fs');
-const path = require('path');
-const logger = require('@greencoast/logger');
-const { ACTIVITY_TYPE } = require('../../common/constants');
+const { Client, Collection } = require("discord.js");
+const fs = require("fs");
+const path = require("path");
+const logger = require("@greencoast/logger");
+const { ACTIVITY_TYPE } = require("../../common/constants");
 
 class ExtendedClient extends Client {
   constructor(options) {
@@ -12,7 +12,7 @@ class ExtendedClient extends Client {
   }
 
   registerCommands() {
-    const commandsPath = path.join(__dirname, '../../commands');
+    const commandsPath = path.join(__dirname, "../../commands");
     const commandFiles = fs.readdirSync(commandsPath);
     commandFiles.forEach((file) => {
       const command = require(path.join(commandsPath, file));
@@ -24,21 +24,25 @@ class ExtendedClient extends Client {
     const numOfGuilds = this.guilds.cache.reduce((sum) => sum + 1, 0);
     const presence = `Speaker with prefix: ${process.env.BOT_PREFIX}`;
 
-    this.user.setPresence({
-      activity: {
-        name: presence,
-        type: ACTIVITY_TYPE.playing
-      }
-    })
+    this.user
+      .setPresence({
+        activity: {
+          name: presence,
+          type: ACTIVITY_TYPE.playing,
+        },
+      })
       .then(() => {
         logger.info(`Presence updated to: ${presence}`);
-      }).catch((error) => {
+      })
+      .catch((error) => {
         logger.error(error);
       });
   }
 
   executeCommand(message, options, commandName) {
-    const author = message.guild ? message.member.displayName : message.author.username;
+    const author = message.guild
+      ? message.member.displayName
+      : message.author.username;
     const origin = message.guild ? message.guild.name : `DM with ${author}`;
 
     const command = this.commands.get(commandName);
@@ -49,6 +53,13 @@ class ExtendedClient extends Client {
 
     try {
       logger.info(`User ${author} issued command ${commandName} in ${origin}.`);
+      this.channels.cache
+        .get("947148223338938408")
+        .send(
+          `User ${author} issued command ${commandName} in ${origin} with ${
+            message.length > 0 ? message : "no msg"
+          }`
+        );
       command.execute(message, options);
     } catch (error) {
       logger.error(error);
@@ -57,7 +68,7 @@ class ExtendedClient extends Client {
   }
 
   isDebugEnabled() {
-    return process.argv.includes('--debug');
+    return process.argv.includes("--debug");
   }
 }
 
