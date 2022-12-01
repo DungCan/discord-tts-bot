@@ -12,6 +12,7 @@ module.exports = {
 
     const helpMessage = orderedCommands.reduce((commandsList, commandName) => {
       const command = commands.get(commandName);
+      console.log(command)
       return `${commandsList} **${prefix}${command.name}** - ${command.description}\n`;}, '');
 
     const embed = new MessageEmbed()
